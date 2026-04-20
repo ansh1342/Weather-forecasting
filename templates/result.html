@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">🌍 Weather AI</div>
+
+<div class="main-container">
+
+    <h1>🌦️ {{ city }} Forecast</h1>
+
+    <div class="forecast-grid">
+        {% for i in range(7) %}
+        <div class="card">
+
+            <h3>{{ dates[i] }}</h3>
+
+            <div class="weather-icon">
+                {% if "Rain" in rain_preds[i].label %}
+                    🌧️
+                {% elif "Cloudy" in rain_preds[i].label %}
+                    ⛅
+                {% else %}
+                    ☀️
+                {% endif %}
+            </div>
+
+            <div class="temp">{{ temp_preds[i] }}°C</div>
+
+            <div class="weather-label">
+                {{ rain_preds[i].label }}
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" style="width: {{ rain_preds[i].prob }}%"></div>
+            </div>
+
+            <p class="prob">{{ rain_preds[i].prob }}% chance</p>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

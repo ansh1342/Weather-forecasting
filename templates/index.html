@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">🌍 Weather AI</div>
+
+<div class="hero-card">
+    <div class="icon">⛅</div>
+    <h1>Weather Forecast</h1>
+    <p>AI-powered 7-day prediction</p>
+
+    <form action="/predict" method="POST">
+        <select name="city" required>
+            <option value="">🌍 Select City</option>
+            <option value="New Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Chennai">Chennai</option>
+        </select>
+
+        <button type="submit">🚀 Get Forecast</button>
+    </form>
+</div>
+
+</body>
+</html>
